@@ -69,7 +69,9 @@ gem 'unicorn'
 gem 'rails_12factor'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
-
+gem 'capistrano', '~> 3.0.1'
+gem 'capistrano-rbenv'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
