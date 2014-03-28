@@ -4,6 +4,7 @@ set :deploy_user, 'deployer'
 # setup repo details
 set :scm, :git
 set :repo_url, 'git@github.com:miahabdu/digidex.git'
+set :deploy_via, :remote_cache
 
 # setup rvm.
 set :rbenv_type, :system

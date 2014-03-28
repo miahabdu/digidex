@@ -69,7 +69,7 @@ gem 'unicorn'
 gem 'rails_12factor'
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.0.1'
+gem 'capistrano'
 gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
