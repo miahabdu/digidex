@@ -7,10 +7,8 @@ set :branch, "master"
 set :full_app_name, "#{fetch(:application)}"
 
 server '107.170.63.44', roles: %w{web app db}, primary: true, ssh_options: {
-    user: "deployer",
+    user: "#{fetch(:user)}",
     forward_agent: true,
-    password: 'Mamun1990',
-    auth_methods: %w(password)
 }
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"

@@ -73,5 +73,6 @@ gem 'capistrano'
 gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
+gem "net-ssh", "~> 2.7.0"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
