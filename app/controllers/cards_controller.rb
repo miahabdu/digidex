@@ -10,6 +10,11 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
+    card_info = {}
+    card_info[:ocr_info] = @card.ocr_info
+    card_info[:url] = @card.image.filename_url
+
+    render :json => card_info.to_json
   end
 
   # GET /cards/new
