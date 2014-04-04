@@ -1,5 +1,35 @@
 %script{:type => 'text/template', :id => 'card_info_template'}
   .donut-main
-    %h4 {{ ocr_info }}
     .side_bar_card{style: "background: url({{ url }}) no-repeat center top; background-size: contain; height: 155px;"}
       / %img{src: "{{ url }}" }
+  
+  .desc
+    %h4.centered.mt {{ name }}
+    / .thumb
+    /   %span.badge.bg-theme
+    /     %i.fa.fa-clock-o
+    / .details
+    /   %p
+    /     %muted Just Now
+    /     %br/
+    /     %a{href: "#"} Paul Rudd
+    /     purchased an item.
+    /     %br/
+  / Second Activity
+  .desc
+    %h4.centered.mt {{ company }}
+  .desc
+    %h4.centered.mt {{ title }}
+  .desc
+    %h4.centered.mt {{ address }}
+  .desc
+    %h4.centered.mt {{ city_state_zip }}
+  .desc
+    %h4.centered.mt {{ phone }}
+  .desc
+    %h4.centered.mt {{ cell }}
+  .desc
+    %h4.centered.mt {{ email }}
+  .desc
+    %h4.centered.mt {{ website }}
+  #calendar.mb

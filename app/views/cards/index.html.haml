@@ -13,7 +13,7 @@
     .top-menu
       %ul.nav.pull-right.top-menu
         %li
-          %a.logout{href: "login.html"} Logout
+          .logout= link_to 'Logout', destroy_user_session_path, method: :delete, style: 'color: white'
   = render '/layouts/sidebar_menu'
   / header end
   /
@@ -21,7 +21,8 @@
     %section.wrapper
       .row
         .col-lg-9
-          = link_to 'New Card', new_card_path
+          = bootstrap_flash
+
           .row.mt
             - @cards.each do |card|
               .col-lg-4.col-md-4.col-sm-4.mb
@@ -43,120 +44,9 @@
           / COMPLETED ACTIONS DONUTS CHART
           #card_info
           
-          / NEW EARNING STATS
-          .panel.terques-chart
-            .panel-body
-              .chart
-                .centered
-                  %span TODAY EARNINGS
-                  %strong $ 890,00 | 15%
-                %br/
-                .sparkline{"data-data" => "[200,135,667,333,526,996,564,123,890,564,455]", "data-fill-color" => "", "data-height" => "75", "data-highlight-line-color" => "#fff", "data-line-color" => "#fff", "data-line-width" => "1", "data-resize" => "true", "data-spot-color" => "#fff", "data-spot-radius" => "4", "data-type" => "line", "data-width" => "90%"}
-          / new earning end
-          / RECENT ACTIVITIES SECTION
-          %h4.centered.mt RECENT ACTIVITY
-          / First Activity
-          .desc
-            .thumb
-              %span.badge.bg-theme
-                %i.fa.fa-clock-o
-            .details
-              %p
-                %muted Just Now
-                %br/
-                %a{href: "#"} Paul Rudd
-                purchased an item.
-                %br/
-          / Second Activity
-          .desc
-            .thumb
-              %span.badge.bg-theme
-                %i.fa.fa-clock-o
-            .details
-              %p
-                %muted 2 Minutes Ago
-                %br/
-                %a{href: "#"} James Brown
-                subscribed to your newsletter.
-                %br/
-          / Third Activity
-          .desc
-            .thumb
-              %span.badge.bg-theme
-                %i.fa.fa-clock-o
-            .details
-              %p
-                %muted 3 Hours Ago
-                %br/
-                %a{href: "#"} Diana Kennedy
-                purchased a year subscription.
-                %br/
-          / Fourth Activity
-          .desc
-            .thumb
-              %span.badge.bg-theme
-                %i.fa.fa-clock-o
-            .details
-              %p
-                %muted 7 Hours Ago
-                %br/
-                %a{href: "#"} Brando Page
-                purchased a year subscription.
-                %br/
-          / USERS ONLINE SECTION
-          %h4.centered.mt TEAM MEMBERS ONLINE
-          / First Member
-          .desc
-            .thumb
-              %img.img-circle{align: "", height: "35px", src: "assets/img/ui-divya.jpg", width: "35px"}/
-            .details
-              %p
-                %a{href: "#"} DIVYA MANIAN
-                %br/
-                %muted Available
-          / Second Member
-          .desc
-            .thumb
-              %img.img-circle{align: "", height: "35px", src: "assets/img/ui-sherman.jpg", width: "35px"}/
-            .details
-              %p
-                %a{href: "#"} DJ SHERMAN
-                %br/
-                %muted I am Busy
-          / Third Member
-          .desc
-            .thumb
-              %img.img-circle{align: "", height: "35px", src: "assets/img/ui-danro.jpg", width: "35px"}/
-            .details
-              %p
-                %a{href: "#"} DAN ROGERS
-                %br/
-                %muted Available
-          / Fourth Member
-          .desc
-            .thumb
-              %img.img-circle{align: "", height: "35px", src: "assets/img/ui-zac.jpg", width: "35px"}/
-            .details
-              %p
-                %a{href: "#"} Zac Sniders
-                %br/
-                %muted Available
-          / CALENDAR
-          #calendar.mb
-            .panel.green-panel.no-margin
-              .panel-body
-                #date-popover.popover.top{style: "cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;"}
-                  .arrow
-                  %h3.popover-title{style: "disadding: none;"}
-                  #date-popover-content.popover-content
-                #my-calendar
-          / / calendar
-        / /col-lg-3
-  / main content end
-  / footer start
   %footer.site-footer
     .text-center
-      2014 - Alvarez.is
-      %a.go-top{href: "index.html#"}
+      2014 - Abdul Miah
+      %a.go-top{href: cards_path}
         %i.fa.fa-angle-up
   / footer end

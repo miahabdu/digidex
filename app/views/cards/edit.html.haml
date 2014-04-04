@@ -1,6 +1,27 @@
 %h1 Editing card
 
-= render 'form'
+= form_for @card do |f|
+
+  = f.text_area :ocr_info, placeholder: 'OCR info', class: "form-control" 
+  = f.text_field :first_name, placeholder: 'First name', class: "form-control"
+  = f.text_field :middle, placeholder: 'Middle intial', class: "form-control"
+  = f.text_field :last_name, placeholder: 'Last name', class: "form-control"
+  = f.text_field :company, placeholder: 'Company name', class: "form-control"
+  = f.text_field :title, placeholder: 'Title', class: "form-control"
+  = f.text_field :street_address, placeholder: 'Stree address', class: "form-control"
+  = f.text_field :city, placeholder: 'City', class: "form-control"
+  = f.text_field :state, placeholder: 'State', class: "form-control"
+  = f.text_field :zipcode, placeholder: 'Zipcode', class: "form-control"
+  = f.text_field :primary_phone, placeholder: 'Phone', class: "form-control"
+  = f.text_field :cell_phone, placeholder: 'Cell', class: "form-control"
+  = f.text_field :email, placeholder: 'Email', class: "form-control"
+  = f.text_field :website, placeholder: 'Website', class: "form-control"
+
+  = f.fields_for :image, @card.image do |img|
+    = img.file_field :filename
+
+  .actions
+    = f.submit 'Save'
 
 = link_to 'Show', @card
 \|
