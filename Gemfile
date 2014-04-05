@@ -48,6 +48,8 @@ gem 'tesseract-ocr'
 gem 'thin'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'fog'
+gem 'aws-s3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

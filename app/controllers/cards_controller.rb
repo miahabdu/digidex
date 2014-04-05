@@ -44,7 +44,7 @@ class CardsController < ApplicationController
     respond_to do |format|
       if @card.save
         @card.update_ocr
-        format.html { redirect_to cards_path, notice: 'Card was successfully created.' }
+        format.html { redirect_to edit_card_path(@card.id), notice: 'Card was successfully created.' }
         format.json { render action: 'show', status: :created, location: @card }
       else
         format.html { render action: 'new' }
@@ -70,7 +70,7 @@ class CardsController < ApplicationController
   # DELETE /cards/1
   # DELETE /cards/1.json
   def destroy
-    @card.image.delete if @card.image.present?
+    @card.image.destroy if @card.image.present?
     @card.tags.each { |f| f.delete } if @card.tags.any?
     @card.destroy
     respond_to do |format|
