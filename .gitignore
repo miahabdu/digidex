@@ -18,3 +18,4 @@
 /public/uploads
 /config/database.yml
 /config/aws.yml
+/config/initializers/carrierwave.rb
