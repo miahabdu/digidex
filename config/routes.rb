@@ -1,10 +1,12 @@
 Digidex::Application.routes.draw do
+  require 'sidekiq/web'
   resources :cards
 
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout'},
                    controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root 'welcome#index'
+  mount Sidekiq::Web, at: '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

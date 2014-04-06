@@ -51,6 +51,10 @@ gem 'carrierwave'
 gem 'fog'
 gem 'aws-s3'
 
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+gem 'capistrano-sidekiq'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

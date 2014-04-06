@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
+  after_commit :update_ocr, :on => :create
   belongs_to :user
 
   has_many :tag_cards
@@ -8,13 +9,7 @@ class Card < ActiveRecord::Base
   accepts_nested_attributes_for :image, allow_destroy: true, reject_if: :all_blank
 
   def update_ocr
-    txt = OcrImage.ocr(self.image.filename_url)
-    if txt.blank?
-      self.ocr_info = "OCR Info couldn't be scanned"
-    else
-      self.ocr_info = txt rescue "OCR Info couldn't be scanned"
-    end
-    self.save
+    CardsWorker.perform_async(self.id)
   end
 
   def self.tagged_with(name)

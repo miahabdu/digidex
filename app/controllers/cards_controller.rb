@@ -43,7 +43,6 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        @card.update_ocr
         format.html { redirect_to edit_card_path(@card.id), notice: 'Card was successfully created.' }
         format.json { render action: 'show', status: :created, location: @card }
       else
