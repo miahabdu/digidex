@@ -11,6 +11,7 @@ class OcrImage
     img.deskew
     img.quantize(256, Magick::GRAYColorspace).contrast(true)
     img.write("#{file_name(read_img)}.tiff")
+    img.destroy!
   end
 
   def self.ocr(read_img)
