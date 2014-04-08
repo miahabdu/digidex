@@ -29,6 +29,7 @@ class OcrImage
     File.delete(tname)
     ocr_text = File.open("#{file_name(read_img)}.txt"){|txt| txt.read} rescue "OCR Info couldn't be scanned"
     read_img.close!
+    GC.start
     return ocr_text
   end
 
