@@ -1,32 +1,82 @@
-!!!
-%html.login-bg
-  %head
-    %title Digidex - Sign up
-    =stylesheet_link_tag "bootstrap_and_overrides.css"
-    =stylesheet_link_tag "signup.css"
-    =stylesheet_link_tag "elements.css"
-    =stylesheet_link_tag "font-awesome.css"
-    =stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800"
-    = csrf_meta_tags
-  %body
-    .header
-      %a{href: "#{root_path}"}
-        / %img.logo{alt: "logo", src: "/assets/logo.png"}/
-        GastroChub
-    .login-wrapper
-      .box
-        .content-wrap
-          = bootstrap_flash
-          %h6 Sign Up
-          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-            = devise_error_messages!
+/ !!!
+/ %html.login-bg
+/   %head
+/     %title Digidex - Sign up
+/     =stylesheet_link_tag "bootstrap_and_overrides.css"
+/     =stylesheet_link_tag "signup.css"
+/     =stylesheet_link_tag "elements.css"
+/     =stylesheet_link_tag "font-awesome.css"
+/     =stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800"
+/     = csrf_meta_tags
+/   %body
+/     .header
+/       %a{href: "#{root_path}"}
+/         / %img.logo{alt: "logo", src: "/assets/logo.png"}/
+/         GastroChub
+/     .login-wrapper
+/       .box
+/         .content-wrap
+/           = bootstrap_flash
+/           %h6 Sign Up
+/           = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+/             = devise_error_messages!
 
-            = f.text_field :username, placeholder: "Username", class: "form-control"
-            - if f.object.password_required?
-              = f.password_field :password, placeholder: "Password", class: "form-control"
-              = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
-            .action
-              %a= f.submit "Sign up", class: "btn-glow primary signup"
-      .already
-        %p Already have an account?
-        = render "devise/shared/links"
+/             = f.text_field :username, placeholder: "Username", class: "form-control"
+/             - if f.object.password_required?
+/               = f.password_field :password, placeholder: "Password", class: "form-control"
+/               = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
+/             .action
+/               %a= f.submit "Sign up", class: "btn-glow primary signup"
+/       .already
+/         %p Already have an account?
+/         = render "devise/shared/links"
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "Dashboard", name: "author"}/
+    %meta{content: "Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina", name: "keyword"}/
+    / %link{href: "http://alvarez.is/demo/dashio/favicon.png", rel: "shortcut icon"}/
+    %title Digidex
+  %body
+    /
+      **********************************************************************************************************************************************************
+      MAIN CONTENT
+      ***********************************************************************************************************************************************************
+    #login-page
+      .container
+
+        .form-login
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            %h2.form-login-heading sign up now
+            .login-wrap
+              = bootstrap_flash
+
+              = f.text_field :username, placeholder: "Username", class: "form-control"
+              %br/
+              - if f.object.password_required?
+                = f.password_field :password, placeholder: "Password", class: "form-control"
+                %br/
+                = f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control"
+              %br/
+              = button_tag(:class => 'btn btn-theme btn-block') do
+                %i.fa.fa-lock
+                SIGN UP
+              %hr/
+              .registration
+                Already have an account?
+                %br/
+                - if controller_name != 'sessions'
+                  = link_to "Click here to sign in", new_session_path(resource_name)
+              .login-social-link.centered
+                %p or you can sign in via your social network
+                %button.btn.btn-facebook{type: "submit"}
+                  %i.fa.fa-facebook
+                  Facebook
+                - if devise_mapping.omniauthable?
+                  - resource_class.omniauth_providers.each do |provider|
+                    = link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-#{provider.to_s.downcase}" do
+                      %i{class: "fa fa-#{provider.to_s.downcase}"}
+                      = provider.to_s.titleize
